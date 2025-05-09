@@ -11,7 +11,7 @@ public class Spawner : MonoBehaviour
     void Start()
     {
         spawnArea = GetComponent<BoxCollider2D>();
-        InvokeRepeating("SpawnMeteor", 0f, spawnInterval);
+        Invoke("SpawnMeteor", spawnInterval);
     }
 
 private void SpawnMeteor()
@@ -19,15 +19,16 @@ private void SpawnMeteor()
 
         Vector3 spawnPosition = new Vector3(
             Random.Range(spawnArea.bounds.min.x, spawnArea.bounds.max.x),
-            spawnArea.transform.position.y,
+            Random.Range(spawnArea.bounds.min.y, spawnArea.bounds.max.y),
             Random.Range(spawnArea.bounds.min.z, spawnArea.bounds.max.z)
         );
 
         GameObject meteor = Instantiate(meteorPrefab, spawnPosition, Quaternion.identity);
-	spawnInterval = Random.Range(0.5f, 5.0f);
+	spawnInterval = Random.Range(2.0f, 10.0f);
 
         float randomSize = Random.Range(sizeRange.x, sizeRange.y);
         meteor.transform.localScale = new Vector3(randomSize, randomSize, randomSize);
+        Invoke("SpawnMeteor", spawnInterval);
     }
     
 }
