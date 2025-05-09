@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     public UnityEvent PlayerMorre;
 
+    public UnityEvent<float> Checklanding;
+
     private void Awake()
     {
         Instance = this;
