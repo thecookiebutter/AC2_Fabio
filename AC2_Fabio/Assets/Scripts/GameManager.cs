@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     public UnityEvent<float> Checklanding;
 
+    public UnityEvent PlayerWin;
+
     private void Awake()
     {
         Instance = this;

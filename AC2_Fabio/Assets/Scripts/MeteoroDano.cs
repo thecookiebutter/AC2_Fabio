@@ -6,6 +6,15 @@ public class MeteoroDano : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
-        GameManager.Instance.PlayerMorre.Invoke();
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            GameManager.Instance.PlayerMorre.Invoke();
+        }
+        
     }
 }
