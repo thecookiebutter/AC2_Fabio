@@ -6,11 +6,12 @@ public class MeteorCollision : MonoBehaviour
 {
     public GameObject explosionEffect;
 
-    private void OnTriggerEnter2D(Collider trigger)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-           Instantiate(explosionEffect, transform.position, Quaternion.identity);
-           Destroy(this.gameObject);      
+        Instantiate(explosionEffect, transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
     }
+
 
     private void Start(){
 
