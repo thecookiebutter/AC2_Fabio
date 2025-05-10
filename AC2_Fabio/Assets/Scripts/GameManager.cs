@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerWin.AddListener(Win);
     }
 
     // Update is called once per frame
@@ -32,5 +33,8 @@ public class GameManager : MonoBehaviour
         
     }
 
-
+    public void Win()
+    {
+        Debug.Log("Win");
+    }
 }

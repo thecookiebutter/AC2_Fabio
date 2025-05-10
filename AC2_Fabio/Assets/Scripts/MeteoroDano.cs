@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class MeteoroDano : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
-    {
-        
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
