@@ -7,6 +7,7 @@ public class PlayerFase2 : MonoBehaviour
     Rigidbody2D rb;
     public float speed = 10;
     public float deadZone = 0.1f;
+    public float pushforce;
 
     void Start()
     {
@@ -21,9 +22,13 @@ public class PlayerFase2 : MonoBehaviour
         tilt.y = tilt.y < deadZone ? 0 : tilt.y;
 
 
-        Vector2 direction = new Vector2(tilt.x * speed, tilt.y * speed);
+        Vector2 direction = new Vector2(tilt.x * speed, 0);
         rb.velocity = direction;
+
+
+        rb.AddForce(Vector2.up * tilt.y * pushforce, ForceMode2D.Force);
     }
+
 
 
     private void OnCollisionEnter2D(Collision2D collision)
