@@ -8,8 +8,12 @@ public class MeteorCollision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Instantiate(explosionEffect, transform.position, Quaternion.identity);
-        Destroy(this.gameObject);
+        if (collision.CompareTag("Laser"))
+        {
+            Instantiate(explosionEffect, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+        }
+        
     }
 
 

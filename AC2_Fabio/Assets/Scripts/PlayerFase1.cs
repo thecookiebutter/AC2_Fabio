@@ -5,9 +5,13 @@ using UnityEngine;
 public class PlayerFase1 : MonoBehaviour
 {
     public Joystick joystick;
-    public float rotationSpeed = 200f;
-    public float thrustForce = 5f;
     private Rigidbody2D rb;
+
+
+    public float force = 5;
+    public float torque = 2;
+
+    public Vector2 velocity;
 
     void Start()
     {
@@ -16,17 +20,11 @@ public class PlayerFase1 : MonoBehaviour
 
     void Update()
     {
-        // Rotação baseada no eixo horizontal
-        float rotationInput = joystick.Horizontal;
-        float rotationAmount = -rotationInput * rotationSpeed * Time.deltaTime;
-        transform.Rotate(0, 0, rotationAmount);
+        float hor = joystick.Horizontal;
+        float ver = joystick.Vertical;
+        rb.AddForce(transform.right * ver * force);
+        rb.AddTorque(-hor * torque);
 
-        // Impulso vertical (como propulsão)
-        float verticalInput = joystick.Vertical;
-        if (Mathf.Abs(verticalInput) > 0.1f)
-        {
-            Vector2 force = transform.up * verticalInput * thrustForce;
-            rb.AddForce(force);
-        }
+        velocity = rb.velocity;
     }
 }
