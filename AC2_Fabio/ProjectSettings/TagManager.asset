@@ -7,6 +7,7 @@ TagManager:
   - FxTemporaire
   - Meteoro
   - Plataforma
+  - Laser
   layers:
   - Default
   - TransparentFX

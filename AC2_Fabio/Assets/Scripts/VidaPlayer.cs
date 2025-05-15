@@ -19,6 +19,6 @@ public class VidaPlayer : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameManager.Instance.PlayerMorre.RemoveListener(Morte);
+        GameManager.Instance.PlayerMorre?.RemoveListener(Morte);
     }
 }

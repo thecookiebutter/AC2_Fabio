@@ -1,33 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LaserShooter : MonoBehaviour
 {
     public GameObject laserPrefab;  
-    public float laserSpeed = 20f;  
-    public Transform shootPoint;    
+    public float laserSpeed = 20f;
+    public Button LaserButton;
+    public Transform shootPoint;
 
-    void Update()
+
+    private void Start()
     {
-        
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            ShootLaser();
-        }
+        LaserButton.onClick.AddListener(ShootLaser);
     }
 
     void ShootLaser()
     {
         
 
-        GameObject laser = Instantiate(laserPrefab, shootPoint.position, Quaternion.identity);
+        GameObject laser = Instantiate(laserPrefab, shootPoint.position, transform.rotation);
 
         
-        Rigidbody rb = laser.GetComponent<Rigidbody>();
+        Rigidbody2D rb = laser.GetComponent<Rigidbody2D>();
         if (rb != null)
         {
-            rb.velocity = transform.forward * laserSpeed;
+            rb.velocity = transform.up * laserSpeed;
         }
     }
 }

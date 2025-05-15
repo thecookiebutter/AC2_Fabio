@@ -10,12 +10,16 @@ public class MeteorCollision : MonoBehaviour
     {
         if (collision.CompareTag("Laser"))
         {
-            Instantiate(explosionEffect, transform.position, Quaternion.identity);
-            Destroy(this.gameObject);
+            MeteroDestroy();
         }
         
     }
 
+    public void MeteroDestroy()
+    {
+        Instantiate(explosionEffect, transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
+    }
 
     private void Start(){
 

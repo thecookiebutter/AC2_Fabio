@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3465040692931709990}
   - component: {fileID: -2731416803658199997}
   - component: {fileID: -7941986428991035780}
+  - component: {fileID: -7836300923093845733}
   m_Layer: 0
   m_Name: Meteoro_Movel
   m_TagString: Meteoro
@@ -213,7 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direcaometeoro: 0
-  speed: 5
+  speed: 3
 --- !u!114 &-7941986428991035780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,3 +228,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionEffect: {fileID: 2433282508537954060, guid: 3ef3ae421f71c5c4e97fe12dc2fc6312, type: 3}
+--- !u!114 &-7836300923093845733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8057507140473662350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9110bed5550025149a696cc4286918a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

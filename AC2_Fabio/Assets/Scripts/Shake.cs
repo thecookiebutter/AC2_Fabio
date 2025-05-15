@@ -9,26 +9,28 @@ public class Shake : MonoBehaviour
     public GameObject explosionEffect;
     public bool shakeAvailable = true;
 
+    private void Start()
+    {
+        GameManager.Instance.PlayerWin.AddListener(PlayerWin);
+    }
+
     private void Update()
     {
         if (Input.acceleration.magnitude >= ThresholdShake)
         {
-            if (Time.time - lastTimeShake > 0.5f) { 
+            if (shakeAvailable) { 
                 lastTimeShake = Time.time;
 
-                if (transform.localScale.x == 2) {
-                    transform.localScale = new Vector3(1, 1, 1);
-                }
-                else
-                {
-                    transform.localScale = new Vector3(2, 2, 2);
-                }
                 DestroyAllMeteors();
                 shakeAvailable = false;
             }
         }
     }
 
+    public void PlayerWin()
+    {
+        DestroyAllMeteors();
+    }
     void DestroyAllMeteors()
 {
     GameObject[] meteors = GameObject.FindGameObjectsWithTag("Meteoro");
@@ -43,4 +45,8 @@ public class Shake : MonoBehaviour
         Destroy(meteor);
     }
 }
+    private void OnDestroy()
+    {
+        GameManager.Instance.PlayerWin.AddListener(PlayerWin);
+    }
 }

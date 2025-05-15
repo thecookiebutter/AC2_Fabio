@@ -9,7 +9,10 @@ public class CountdownTimer : MonoBehaviour
     public float timeRemaining = 30f;
     public TMP_Text timerText;
     private bool timerIsRunning = true;
-
+    private void Start()
+    {
+        GameManager.Instance.PlayerMorre.AddListener(FimdeJogo);
+    }
     void Update()
     {
         if (timerIsRunning)
@@ -21,7 +24,7 @@ public class CountdownTimer : MonoBehaviour
             }
             else
             {
-                Debug.Log("Venceu!");
+                GameManager.Instance.Win();
                 timeRemaining = 0;
                 timerIsRunning = false;
                 UpdateTimerDisplay(timeRemaining);
@@ -36,5 +39,15 @@ public class CountdownTimer : MonoBehaviour
         int minutes = Mathf.FloorToInt(timeToDisplay / 60);
 
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    public void FimdeJogo()
+    {
+        timerIsRunning = false;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.PlayerMorre?.RemoveListener(FimdeJogo);
     }
 }

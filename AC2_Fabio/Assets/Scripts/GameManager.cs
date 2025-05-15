@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class GameManager : MonoBehaviour
 
     public UnityEvent PlayerWin;
 
+    public string proximafase;
+
     private void Awake()
     {
         Instance = this;
@@ -24,17 +27,36 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerWin.AddListener(Win);
+        PlayerMorre.AddListener(LoseReset);
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void Win()
     {
-        Debug.Log("Win");
+
+        PlayerWin.Invoke();
+        StartCoroutine("NextScene");
+    }
+
+    public void LoseReset()
+    {
+        ResetScene();
+    }
+
+    public IEnumerator NextScene()
+    {
+        yield return new WaitForSeconds (3.0f);
+        SceneManager.LoadScene(proximafase);
+    }
+
+    public IEnumerator ResetScene()
+    {
+        yield return new WaitForSeconds(3.0f);
+        SceneManager.LoadScene("Fase1");
+    }
+    private void OnDestroy()
+    {
+        PlayerMorre.RemoveListener(LoseReset);
     }
 }

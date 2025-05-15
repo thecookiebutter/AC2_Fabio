@@ -22,7 +22,7 @@ public class PlayerFase1 : MonoBehaviour
     {
         float hor = joystick.Horizontal;
         float ver = joystick.Vertical;
-        rb.AddForce(transform.right * ver * force);
+        rb.AddForce(transform.up * ver * force);
         rb.AddTorque(-hor * torque);
 
         velocity = rb.velocity;
