@@ -8,6 +8,7 @@ public class PlayerFase2 : MonoBehaviour
     public float speed = 10;
     public float deadZone = 0.1f;
     public float pushforce;
+    public UISpeed ui;
 
     void Start()
     {
@@ -22,13 +23,14 @@ public class PlayerFase2 : MonoBehaviour
         tilt.y = tilt.y < deadZone ? 0 : tilt.y;
 
 
-        Vector2 direction = new Vector2(tilt.x * speed, 0);
+        Vector2 direction = new Vector2(tilt.x * speed, rb.velocity.y);
         rb.velocity = direction;
 
 
         rb.AddForce(Vector2.up * tilt.y * pushforce, ForceMode2D.Force);
-    }
+        ui.Velocidadetxt(rb.velocity.y);
 
+    }
 
 
     private void OnCollisionEnter2D(Collision2D collision)

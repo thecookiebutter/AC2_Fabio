@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Fase1.unity
     guid: ee16d1e649550f743a8bab27657049b6
   - enabled: 1
-    path: Assets/Fase2.unity
+    path: Assets/Scenes/Fase2.unity
     guid: cebf93e4340113e49ba3ad3ff3e82c1f
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: b8191f82c95eb254aaa004287c2b44e3, type: 2}

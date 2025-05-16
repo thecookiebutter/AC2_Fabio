@@ -12,12 +12,14 @@ public class PlataformaAterrisagem : MonoBehaviour
 
     public void CheckLanding(float speed)
     {
-        if (speed > velocidademax)
+        if (Mathf.Abs(speed) > velocidademax)
         {
-            GameManager.Instance.PlayerMorre.Invoke();
+            Debug.Log("morre");
+            //GameManager.Instance.PlayerMorre.Invoke();
         }
         else
         {
+            Debug.Log("win");
             GameManager.Instance.PlayerWin.Invoke();
         }
     }
